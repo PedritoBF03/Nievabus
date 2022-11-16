@@ -1,19 +1,42 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateClienteDto } from './dto/create-cliente.dto';
 import { UpdateClienteDto } from './dto/update-cliente.dto';
+import { Cliente } from './entities/cliente.entity';
 
 @Injectable()
 export class ClientesService {
-  create(createClienteDto: CreateClienteDto) {
-    return 'This action adds a new cliente';
+
+  constructor(
+    @InjectRepository(Cliente)
+    private readonly clienteRepository: Repository<Cliente>
+  ){
+    
+  }
+
+  async create(createClienteDto: CreateClienteDto) {
+    try {
+      const cliente = this.clienteRepository.create(createClienteDto);
+      console.log(cliente);
+      await this.clienteRepository.save(cliente);
+      return cliente;
+
+    } catch (error) {
+      console.log(error);
+      throw new InternalServerErrorException('Ayuda')
+    }
   }
 
   findAll() {
-    return `This action returns all clientes`;
+    return this.clienteRepository.find({});
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} cliente`;
+    return this.clienteRepository.findOne({
+      where: 
+        { id: id}
+    });
   }
 
   update(id: number, updateClienteDto: UpdateClienteDto) {
