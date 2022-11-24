@@ -16,10 +16,9 @@ export class CreateClienteDto {
     @MaxLength(9)
     dni: string;
 
-    @IsNumber()
-    @IsPositive()
+    @IsString()
     @MaxLength(9)
-    telefono: number;
+    telefono: string;
 
 
 }

@@ -5,6 +5,7 @@ import { ClientesModule } from './modules/clientes/clientes.module';
 import { ViajesModule } from './modules/viajes/viajes.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { UsuarioModule } from './modules/usuario/usuario.module';
 
 //yarn add @nestjs/config
 //yarn add @nestjs/config
@@ -26,7 +27,8 @@ import { ConfigModule } from '@nestjs/config';
     AutobusesModule, 
     EmpleadosModule, 
     ClientesModule, 
-    ViajesModule
+    ViajesModule, 
+    UsuarioModule
   ],
   controllers: [],
   providers: [],

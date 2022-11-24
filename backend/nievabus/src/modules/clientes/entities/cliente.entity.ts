@@ -13,10 +13,7 @@ export class Cliente {
     dni: string;
 
     @Column('text', { nullable: true })
-    email: string;
-
-    @Column('integer', { nullable: true })
-    telefono: number;
+    telefono: string;
 
 
 
