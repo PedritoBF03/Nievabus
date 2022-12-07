@@ -1,19 +1,42 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateViajeDto } from './dto/create-viaje.dto';
 import { UpdateViajeDto } from './dto/update-viaje.dto';
+import { Viaje } from './entities/viaje.entity';
 
 @Injectable()
 export class ViajesService {
-  create(createViajeDto: CreateViajeDto) {
-    return 'This action adds a new viaje';
+
+  constructor(
+    @InjectRepository(Viaje)
+    private readonly viajeRepository: Repository<Viaje>
+  ){
+    
+  }
+
+  async create(createViajeDto: CreateViajeDto) {
+    try {
+      const viaje = this.viajeRepository.create(createViajeDto);
+      console.log(viaje);
+      await this.viajeRepository.save(viaje);
+      return viaje;
+
+    } catch (error) {
+      console.log(error);
+      throw new InternalServerErrorException('Ayuda')
+    }
   }
 
   findAll() {
-    return `This action returns all viajes`;
+    return this.viajeRepository.find({});
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} viaje`;
+  findOne(referencia: number) {
+    return this.viajeRepository.findOne({
+      where: 
+        { referencia: referencia}
+    });
   }
 
   update(id: number, updateViajeDto: UpdateViajeDto) {

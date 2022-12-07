@@ -12,6 +12,9 @@ export class Empleado {
     @Column('text', { nullable: true} )
     apellidos: string;
 
+    @Column('text', { nullable: true} )
+    email: string;
+
     @Column('text', { nullable: true })
     dni: string;
 

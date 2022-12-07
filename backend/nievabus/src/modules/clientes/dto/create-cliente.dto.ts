@@ -1,4 +1,4 @@
-import { IsNumber, IsPositive, IsString, MaxLength, MinLength } from "class-validator";
+import { IsEmail, IsNumber, IsPositive, IsString, MaxLength, MinLength } from "class-validator";
 
 
 export class CreateClienteDto {
@@ -7,18 +7,17 @@ export class CreateClienteDto {
     // id: number;
 
     @IsString()
-    name: string;
-
-    @IsString()
-    email: string;
-
-    @IsString()
     @MaxLength(9)
     dni: string;
+
+    @IsString()
+    name: string;
 
     @IsString()
     @MaxLength(9)
     telefono: string;
 
+    @IsString()
+    direccion: string;
 
 }

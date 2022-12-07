@@ -17,18 +17,35 @@ export class ClientesController {
     return this.clientesService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.clientesService.findOne(+id);
+  //Prueba dejando de clave primaria a DNI
+  @Get(':dni')
+  findOne(@Param('dni') dni: string) {
+    return this.clientesService.findOne(dni);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateClienteDto: UpdateClienteDto) {
-    return this.clientesService.update(+id, updateClienteDto);
+  @Patch(':dni')
+  update(@Param('dni') dni: string, @Body() updateClienteDto: UpdateClienteDto) {
+    return this.clientesService.update(dni, updateClienteDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.clientesService.remove(+id);
+  @Delete(':dni')
+  remove(@Param('dni') dni: string) {
+    return this.clientesService.remove(dni);
   }
+
+  //Original
+  // @Get(':id')
+  // findOne(@Param('id') id: string) {
+  //   return this.clientesService.findOne(+id);
+  // }
+
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updateClienteDto: UpdateClienteDto) {
+  //   return this.clientesService.update(+id, updateClienteDto);
+  // }
+
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.clientesService.remove(+id);
+  // }
 }

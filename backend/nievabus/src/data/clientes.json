@@ -1,0 +1,32 @@
+[
+    {
+        "dni": "12345678V",
+        "name": "Pedro Benitez Fuentes",
+        "telefono": "652656468",
+        "direccion": "Calle Paloma nº52"
+    },
+    {
+        "dni": "87654321A",
+        "name": "Yesica Roig Giron",
+        "telefono": "857954234",
+        "direccion": "Plaza Mayor, Nº7"
+    },
+    {
+        "dni": "46821397F",
+        "name": "Leyre Mariño Tena",
+        "telefono": "956874326",
+        "direccion": "Calvario nº65"
+    },
+    {
+        "dni": "22923678H",
+        "name": "Arsenio Carvajal Corominas",
+        "telefono": "789654135",
+        "direccion": "Paseo Alameda nº7"
+    },
+    {
+        "dni": "33336648Y",
+        "name": "Francisca Rivera Calvo",
+        "telefono": "879645325",
+        "direccion": "Noria del Pino 53"
+    }
+]

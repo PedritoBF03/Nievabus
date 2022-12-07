@@ -1,25 +1,29 @@
 import { IsEmail, IsString, MaxLength } from "class-validator";
 
-export class CreateEmpleadoDto {
+export class CreateUsuarioDto {
+
+    //Añadidio para prueba de DNI como clave primaria
+    @IsString()
+    dni: string;
 
     @IsString()
-    nombre: string;
-
-    @IsString()
-    apellidos: string;
+    username: string;
 
     @IsEmail()
     email: string;
 
     @IsString()
-    @MaxLength(9)
-    dni: string;
+    instagram: string;
 
     @IsString()
-    fecha_nacimiento: string;
+    facebook: string;
 
     @IsString()
     @MaxLength(9)
-    telefono: string;
+    twitter: string;
 
 }
+
+
+ 
+

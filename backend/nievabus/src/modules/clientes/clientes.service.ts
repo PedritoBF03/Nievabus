@@ -29,21 +29,40 @@ export class ClientesService {
   }
 
   findAll() {
-    return this.clienteRepository.find({});
-  }
-
-  findOne(id: number) {
-    return this.clienteRepository.findOne({
-      where: 
-        { id: id}
+    return this.clienteRepository.find({
+      relations: ['usuario']
     });
   }
 
-  update(id: number, updateClienteDto: UpdateClienteDto) {
-    return `This action updates a #${id} cliente`;
+  //Prueba dejando de clave primaria a DNI
+  findOne(dni: string) {
+    return this.clienteRepository.findOne({
+      where: 
+        { dni: dni}
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} cliente`;
+  update(dni: string, updateClienteDto: UpdateClienteDto) {
+    return `This action updates a #${dni} cliente`;
   }
+
+  remove(dni: string) {
+    return `This action removes a #${dni} cliente`;
+  }
+
+  //Original
+  // findOne(id: number) {
+  //   return this.clienteRepository.findOne({
+  //     where: 
+  //       { id: id}
+  //   });
+  // }
+
+  // update(id: number, updateClienteDto: UpdateClienteDto) {
+  //   return `This action updates a #${id} cliente`;
+  // }
+
+  // remove(id: number) {
+  //   return `This action removes a #${id} cliente`;
+  // }
 }

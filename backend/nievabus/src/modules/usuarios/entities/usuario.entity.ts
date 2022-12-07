@@ -1,0 +1,37 @@
+import { Cliente } from "src/modules/clientes/entities/cliente.entity";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+
+@Entity()
+export class Usuario {
+
+    //Prueba dejando de clave primaria a DNI
+    @PrimaryGeneratedColumn('identity')
+    dni: string;
+
+    //Original
+    // @PrimaryGeneratedColumn('increment')
+    // id: number;
+
+    @Column('text', { nullable: true} )
+    username: string;
+
+    @Column('text', { nullable: true })
+    email: string;
+
+    @Column('text', { nullable: true })
+    instagram: string;
+
+    @Column('text', { nullable: true })
+    facebook: string;
+
+    @Column('text', { nullable: true })
+    twitter: string;
+
+    @OneToOne(
+        () => Cliente,
+        (cliente) => cliente.usuario,
+    )
+    @JoinColumn()
+    cliente: Cliente;
+
+}

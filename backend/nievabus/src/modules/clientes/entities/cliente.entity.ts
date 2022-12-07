@@ -1,20 +1,39 @@
-import { Column, PrimaryGeneratedColumn, Entity , BeforeInsert, OneToMany} from "typeorm";
+import { Usuario } from "src/modules/usuarios/entities/usuario.entity";
+import { Column, PrimaryGeneratedColumn, Entity , BeforeInsert, OneToMany, OneToOne, JoinColumn} from "typeorm";
 
 @Entity()
 export class Cliente {
 
-    @PrimaryGeneratedColumn('increment')
-    id: number;
+    //Prueba dejando vlave primaria a DNI
+    // @PrimaryGeneratedColumn('increment')
+    // id: number;
+
+    @PrimaryGeneratedColumn('identity')
+    dni: string;
+
+    //Original
+    // @PrimaryGeneratedColumn('increment')
+    // id: number;
+
+    // @Column('text', { nullable: true })
+    // dni: string;
 
     @Column('text', { nullable: true} )
     name: string;
 
     @Column('text', { nullable: true })
-    dni: string;
-
-    @Column('text', { nullable: true })
     telefono: string;
 
+    @Column('text', { nullable: true })
+    direccion: string;
+
+    @OneToOne(
+        () => Usuario,
+        (usuario) => usuario.cliente,
+        { eager: true, cascade: true }
+    )
+    usuario: Usuario;
+}
 
 
     // @OneToMany(
@@ -32,17 +51,3 @@ export class Cliente {
     //         this.github = `https://github.com/${this.github}`
     //     }
     // }
-
-   
-
-}
-
-
-
-
-// {
-//     "name": "Pedro Benitez Fuentes",
-//     "telefono": "652656468",
-//     "email": "pedro@gmail.com",
-//     "dni": "12345678V",
-// }
