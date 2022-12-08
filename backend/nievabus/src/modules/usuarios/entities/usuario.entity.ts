@@ -1,11 +1,11 @@
 import { Cliente } from "src/modules/clientes/entities/cliente.entity";
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Usuario {
 
     //Prueba dejando de clave primaria a DNI
-    @PrimaryGeneratedColumn('identity')
+    @PrimaryColumn()
     dni: string;
 
     //Original

@@ -4,29 +4,47 @@ import { Repository } from 'typeorm';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import { Usuario } from './entities/usuario.entity';
+import { ClientesService } from '../clientes/clientes.service';
 
 @Injectable()
 export class UsuariosService {
 
   constructor(
     @InjectRepository(Usuario)
-    private readonly usuarioRepository: Repository<Usuario>
+    private readonly usuarioRepository: Repository<Usuario>,
+    // Prueba cambiando el create si se elimina la prueba se elimina esta linea
+    private readonly clienteService: ClientesService
   ){
     
   }
 
   async create(createUsuarioDto: CreateUsuarioDto) {
     try {
-      const usuario = this.usuarioRepository.create(createUsuarioDto);
-      console.log(usuario);
-      await this.usuarioRepository.save(usuario);
-      return usuario;
-
-    } catch (error) {
-      console.log(error);
-      throw new InternalServerErrorException('Ayuda')
+      console.log(createUsuarioDto);
+      const { dniCliente, ...camposProfile } = createUsuarioDto;
+      const usuarios = this.usuarioRepository.create({...camposProfile});
+      const cliente = await this.clienteService.findOne(dniCliente);
+      usuarios.cliente = cliente;
+      await this.usuarioRepository.save(usuarios);
+      return usuarios
+    } catch(error){
+        return new InternalServerErrorException('Error en BD')
     }
+    
   }
+  
+  // async create(createUsuarioDto: CreateUsuarioDto) {
+  //   try {
+  //     const usuario = this.usuarioRepository.create(createUsuarioDto);
+  //     console.log(usuario);
+  //     await this.usuarioRepository.save(usuario);
+  //     return usuario;
+
+  //   } catch (error) {
+  //     console.log(error);
+  //     throw new InternalServerErrorException('Ayuda')
+  //   }
+  // }
 
   findAll() {
     return this.usuarioRepository.find({});

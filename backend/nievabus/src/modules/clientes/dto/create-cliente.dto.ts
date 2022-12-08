@@ -7,7 +7,6 @@ export class CreateClienteDto {
     // id: number;
 
     @IsString()
-    @MaxLength(9)
     dni: string;
 
     @IsString()

@@ -1,4 +1,4 @@
-import { IsEmail, IsString, MaxLength } from "class-validator";
+import { IsEmail, IsString, MaxLength, MinLength } from "class-validator";
 
 export class CreateUsuarioDto {
 
@@ -21,6 +21,10 @@ export class CreateUsuarioDto {
     @IsString()
     @MaxLength(9)
     twitter: string;
+
+    @IsString()
+    @MinLength(1)
+    dniCliente: string;
 
 }
 

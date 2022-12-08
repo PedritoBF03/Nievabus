@@ -1,5 +1,5 @@
 import { Usuario } from "src/modules/usuarios/entities/usuario.entity";
-import { Column, PrimaryGeneratedColumn, Entity , BeforeInsert, OneToMany, OneToOne, JoinColumn} from "typeorm";
+import { Column, PrimaryGeneratedColumn, Entity , BeforeInsert, OneToMany, OneToOne, JoinColumn, PrimaryColumn} from "typeorm";
 
 @Entity()
 export class Cliente {
@@ -8,7 +8,7 @@ export class Cliente {
     // @PrimaryGeneratedColumn('increment')
     // id: number;
 
-    @PrimaryGeneratedColumn('identity')
+    @PrimaryColumn()
     dni: string;
 
     //Original
