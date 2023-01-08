@@ -1,6 +1,7 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import { CreateAutobusDto } from './dto/create-autobus.dto';
 import { UpdateAutobusDto } from './dto/update-autobus.dto';
 import { Autobus } from './entities/autobus.entity';
@@ -9,6 +10,8 @@ import { Autobus } from './entities/autobus.entity';
 export class AutobusesService {
 
   constructor(
+    private readonly dataSource: DataSource,
+
     @InjectRepository(Autobus)
     private readonly autobusRepository: Repository<Autobus>
   ){
@@ -32,18 +35,62 @@ export class AutobusesService {
     return this.autobusRepository.find({});
   }
 
-  findOne(id: number) {
+  findOne(matricula: string) {
     return this.autobusRepository.findOne({
       where: 
-        { id: id}
+        { matricula: matricula}
     });
   }
 
-  update(id: number, updateAutobusDto: UpdateAutobusDto) {
-    return `This action updates a #${id} autobus`;
+  async update(matricula: string, updateAutobusDto: UpdateAutobusDto) {
+    const { ...rest } = updateAutobusDto;
+    const autobus = await this.autobusRepository.preload({
+      matricula,
+      ...rest
+    });
+
+    if(!autobus) throw new NotFoundException(`Autobus no encontrado`);
+
+    const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+      await queryRunner.manager.save(autobus);
+      await queryRunner.commitTransaction();
+      await queryRunner.release();
+
+      return this.findOne(matricula);
+    }
+    catch (error) {
+      await queryRunner.rollbackTransaction();
+      await queryRunner.release();
+      this.handleDBErrors(error);
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} autobus`;
+  async remove(matricula: string) {
+    const autobus = await this.findOne(matricula);
+    await this.autobusRepository.remove(autobus);
+  }
+
+  async deleteAllAutobuses() {
+    const query = this.autobusRepository.createQueryBuilder('autobus');
+    try {
+      return await query
+      .delete()
+      .where({})
+      .execute();
+    }
+    catch (error) {
+      this.handleDBErrors(error);
+    }
+  }
+
+  private handleDBErrors(error: any): never {
+    if (error.code === '23505'){
+      throw new BadRequestException(error.detail);
+    }
+    throw new InternalServerErrorException('Please Check Server Error ...');
   }
 }

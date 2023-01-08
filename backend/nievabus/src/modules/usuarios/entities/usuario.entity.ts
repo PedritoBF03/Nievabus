@@ -8,10 +8,6 @@ export class Usuario {
     @PrimaryColumn()
     dni: string;
 
-    //Original
-    // @PrimaryGeneratedColumn('increment')
-    // id: number;
-
     @Column('text', { nullable: true} )
     username: string;
 
@@ -30,6 +26,7 @@ export class Usuario {
     @OneToOne(
         () => Cliente,
         (cliente) => cliente.usuario,
+        {onDelete: 'CASCADE'}
     )
     @JoinColumn()
     cliente: Cliente;

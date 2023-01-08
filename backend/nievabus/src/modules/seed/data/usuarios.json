@@ -5,7 +5,8 @@
         "email": "pedro@gmail.com",
         "instagram": "pedrobf",
         "facebook": "pedrobf",
-        "twitter": "pedrobf"
+        "twitter": "pedrobf",
+        "dniCliente": "12345678V"
     },
     {
         "dni": "87654321A",
@@ -13,7 +14,8 @@
         "email": "yesica@gmail.com",
         "instagram": "yesicarg15",
         "facebook": "yesicarg15",
-        "twitter": "yesicarg15"
+        "twitter": "yesicarg15",
+        "dniCliente": "87654321A"
     },
     {
         "dni": "46821397F",
@@ -21,7 +23,8 @@
         "email": "leyre@gmail.com",
         "instagram": "leyremt65",
         "facebook": "leyremt65",
-        "twitter": "leyremt65"
+        "twitter": "leyremt65",
+        "dniCliente": "46821397F"
     },
     {
         "dni": "22923678H",
@@ -29,7 +32,8 @@
         "email": "arsenio@gmail.com",
         "instagram": "arsenyocc7536",
         "facebook": "arsenyocc7536",
-        "twitter": "arsenyocc7536"
+        "twitter": "arsenyocc7536",
+        "dniCliente": "22923678H"
     },
     {
         "dni": "33336648Y",
@@ -37,7 +41,8 @@
         "email": "francisca@gmail.com",
         "instagram": "franciscarc453",
         "facebook": "franciscarc453",
-        "twitter": "franciscarc453"
+        "twitter": "franciscarc453",
+        "dniCliente": "33336648Y"
     }
 ]
 

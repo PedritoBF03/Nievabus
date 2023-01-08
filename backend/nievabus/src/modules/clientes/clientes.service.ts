@@ -1,6 +1,6 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import { CreateClienteDto } from './dto/create-cliente.dto';
 import { UpdateClienteDto } from './dto/update-cliente.dto';
 import { Cliente } from './entities/cliente.entity';
@@ -9,6 +9,8 @@ import { Cliente } from './entities/cliente.entity';
 export class ClientesService {
 
   constructor(
+    private readonly dataSource: DataSource,
+    
     @InjectRepository(Cliente)
     private readonly clienteRepository: Repository<Cliente>
   ){
@@ -18,7 +20,7 @@ export class ClientesService {
   async create(createClienteDto: CreateClienteDto) {
     try {
       const cliente = this.clienteRepository.create(createClienteDto);
-      console.log(cliente);
+      //console.log(cliente);
       await this.clienteRepository.save(cliente);
       return cliente;
 
@@ -38,16 +40,60 @@ export class ClientesService {
   findOne(dni: string) {
     return this.clienteRepository.findOne({
       where: 
-        { dni: dni}
+        { dni}
     });
   }
 
-  update(dni: string, updateClienteDto: UpdateClienteDto) {
-    return `This action updates a #${dni} cliente`;
+  async update(dni: string, updateClienteDto: UpdateClienteDto) {
+    const { ...rest } = updateClienteDto;
+    const cliente = await this.clienteRepository.preload({
+      dni,
+      ...rest
+    });
+
+    if(!cliente) throw new NotFoundException(`Cliente no encontrado`);
+
+    const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+      await queryRunner.manager.save(cliente);
+      await queryRunner.commitTransaction();
+      await queryRunner.release();
+
+      return this.findOne(dni);
+    }
+    catch (error) {
+      await queryRunner.rollbackTransaction();
+      await queryRunner.release();
+      this.handleDBErrors(error);
+    }
   }
 
-  remove(dni: string) {
-    return `This action removes a #${dni} cliente`;
+  async remove(dni: string) {
+    const cliente = await this.findOne(dni);
+    await this.clienteRepository.remove(cliente);
+  }
+
+  async deleteAllClientes() {
+    const query = this.clienteRepository.createQueryBuilder('cliente');
+    try {
+      return await query
+      .delete()
+      .where({})
+      .execute();
+    }
+    catch (error) {
+      this.handleDBErrors(error);
+    }
+  }
+
+  private handleDBErrors(error: any): never {
+    if (error.code === '23505'){
+      throw new BadRequestException(error.detail);
+    }
+    throw new InternalServerErrorException('Please Check Server Error ...');
   }
 
   //Original

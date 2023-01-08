@@ -3,6 +3,10 @@ import { IsEmail, IsString, MaxLength } from "class-validator";
 export class CreateEmpleadoDto {
 
     @IsString()
+    @MaxLength(9)
+    dni: string;
+    
+    @IsString()
     nombre: string;
 
     @IsString()
@@ -10,10 +14,6 @@ export class CreateEmpleadoDto {
 
     @IsEmail()
     email: string;
-
-    @IsString()
-    @MaxLength(9)
-    dni: string;
 
     @IsString()
     fecha_nacimiento: string;

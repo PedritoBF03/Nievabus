@@ -1,18 +1,28 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Viaje } from "src/modules/viajes/entities/viaje.entity";
+import { Column, Entity, ManyToMany, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
 
 @Entity()
 export class Autobus {
 
-    @PrimaryGeneratedColumn('increment')
-    id: number;
+    @PrimaryColumn()
+    matricula: string;
 
     @Column('text', { nullable: true} )
     marca: string;
 
     @Column('text', { nullable: true })
-    motor: string;
+    modelo: string;
 
     @Column('text', { nullable: true })
     plazas: string;
+
+
+    //ManyToMany viajes
+    @ManyToMany(
+        () => Viaje,
+        (viaje) => viaje.autobus,
+        { onDelete: 'CASCADE' }
+    )
+    viaje?: Viaje[];
 
 }

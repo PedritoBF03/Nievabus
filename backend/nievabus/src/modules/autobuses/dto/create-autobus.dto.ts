@@ -4,6 +4,9 @@ import { IsString, MaxLength } from "class-validator";
 export class CreateAutobusDto {
 
     @IsString()
+    matricula: string;
+
+    @IsString()
     marca: string;
 
     @IsString()

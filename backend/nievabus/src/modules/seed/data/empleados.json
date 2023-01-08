@@ -1,0 +1,18 @@
+[
+    {
+        "dni": "34535465V",
+        "nombre": "Ramón",
+        "apellidos": "Jimenez",
+        "email": "ramon@gmail.com",
+        "fecha_nacimiento": "12-3-1958",
+        "telefono": "687445930"
+    },
+    {
+        "dni": "14750023O",
+        "nombre": "Sonia",
+        "apellidos": "Lorenzo",
+        "email": "sonia@gmail.com",
+        "fecha_nacimiento": "12-4-1988",
+        "telefono": "687450930"
+    }
+]

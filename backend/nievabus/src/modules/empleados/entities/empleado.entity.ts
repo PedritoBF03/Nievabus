@@ -1,10 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Viaje } from "src/modules/viajes/entities/viaje.entity";
+import { Column, Entity, ManyToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Empleado {
 
-    @PrimaryGeneratedColumn('increment')
-    id: number;
+    @PrimaryColumn()
+    dni: string;
 
     @Column('text', { nullable: true} )
     nombre: string;
@@ -15,13 +16,16 @@ export class Empleado {
     @Column('text', { nullable: true} )
     email: string;
 
-    @Column('text', { nullable: true })
-    dni: string;
-
     @Column('text', { nullable: true} )
     fecha_nacimiento: string;
 
     @Column('text', { nullable: true })
     telefono: string;
 
+    @ManyToMany(
+        () => Viaje,
+        (viaje) => viaje.empleado,
+        {onDelete: 'CASCADE'}
+    )
+    viaje?: Viaje[];
 }

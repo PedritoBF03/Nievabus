@@ -1,0 +1,14 @@
+[
+    {
+        "matricula": "5463-FSD",
+        "marca": "Volvo",
+        "modelo": "Susundegui",
+        "plazas": "55"
+    },
+    {
+        "matricula": "5463-SWD",
+        "marca": "Seat",
+        "modelo": "Ibiza",
+        "plazas": "40"
+    }
+]

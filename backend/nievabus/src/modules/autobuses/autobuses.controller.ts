@@ -8,7 +8,7 @@ export class AutobusesController {
   constructor(private readonly autobusesService: AutobusesService) {}
 
   @Post()
-  create(@Body() createAutobusDto: CreateAutobusDto) {
+  async create(@Body() createAutobusDto: CreateAutobusDto) {
     return this.autobusesService.create(createAutobusDto);
   }
 
@@ -17,18 +17,18 @@ export class AutobusesController {
     return this.autobusesService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.autobusesService.findOne(+id);
+  @Get(':matricula')
+  findOne(@Param('matricula') matricula: string) {
+    return this.autobusesService.findOne(matricula);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAutobusDto: UpdateAutobusDto) {
-    return this.autobusesService.update(+id, updateAutobusDto);
+  @Patch(':matricula')
+  update(@Param('matricula') matricula: string, @Body() updateAutobusDto: UpdateAutobusDto) {
+    return this.autobusesService.update(matricula, updateAutobusDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.autobusesService.remove(+id);
+  @Delete(':matricula')
+  remove(@Param('matricula') matricula: string) {
+    return this.autobusesService.remove(matricula);
   }
 }

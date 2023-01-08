@@ -10,6 +10,6 @@ import { Autobus } from './entities/autobus.entity';
   imports: [
     TypeOrmModule.forFeature([ Autobus ])
   ],
-  exports: [AutobusesService]
+  exports: [AutobusesService, TypeOrmModule]
 })
 export class AutobusesModule {}

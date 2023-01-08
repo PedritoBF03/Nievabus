@@ -6,6 +6,7 @@ import { ViajesModule } from './modules/viajes/viajes.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { UsuariosModule } from './modules/usuarios/usuarios.module';
+import { SeedModule } from './modules/seed/seed.module';
 
 //yarn add @nestjs/config
 //yarn add @nestjs/config
@@ -27,7 +28,8 @@ import { UsuariosModule } from './modules/usuarios/usuarios.module';
     AutobusesModule, 
     EmpleadosModule, 
     ClientesModule, 
-    ViajesModule, UsuariosModule
+    ViajesModule, 
+    UsuariosModule, SeedModule
   ],
   controllers: [],
   providers: [],

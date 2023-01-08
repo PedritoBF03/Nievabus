@@ -1,0 +1,22 @@
+[
+    {
+        "referencia": "HC-M",
+        "origen": "Huércal-Overa",
+        "destino": "Madrid",
+        "hora_inicio": "09:00",
+        "ida_vuelta": "si",
+        "matriculaAutobus": ["JLK 9460"],
+        "dniCliente": ["12345678V"],
+        "dniEmpleado": ["34535465V"]
+    },
+    {
+        "referencia": "HC-S",
+        "origen": "Huércal-Overa",
+        "destino": "Sevilla",
+        "hora_inicio": "10:00",
+        "ida_vuelta": "si",
+        "matriculaAutobus": ["POK 9461"],
+        "dniCliente": ["33336648Y"],
+        "dniEmpleado": ["14750023O"]
+    }
+]

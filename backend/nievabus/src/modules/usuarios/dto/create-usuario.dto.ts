@@ -23,7 +23,6 @@ export class CreateUsuarioDto {
     twitter: string;
 
     @IsString()
-    @MinLength(1)
     dniCliente: string;
 
 }

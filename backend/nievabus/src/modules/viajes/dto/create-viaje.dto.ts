@@ -3,6 +3,9 @@ import { IsEmail, IsIn, IsString, MaxLength } from "class-validator";
 export class CreateViajeDto {
 
     @IsString()
+    referencia: string;
+    
+    @IsString()
     origen: string;
 
     @IsString()
@@ -16,15 +19,12 @@ export class CreateViajeDto {
     ida_vuelta: string;
 
     @IsString()
-    @MaxLength(8)
-    matricula_autobus: string;
+    matriculaAutobus: string[];
 
     @IsString()
-    @MaxLength(9)
-    dni_cliente: string;
+    dniCliente: string[];
 
     @IsString()
-    @MaxLength(9)
-    dni_empleado: string;
+    dniEmpleado: string[];
 
 }
