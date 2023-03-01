@@ -10,6 +10,9 @@ export class Viaje {
     referencia: string;
 
     @Column('text', { nullable: true} )
+    descripcion: string;
+
+    @Column('text', { nullable: true} )
     origen: string;
 
     @Column('text', { nullable: true })
@@ -20,6 +23,9 @@ export class Viaje {
 
     @Column('text', { nullable: true })
     ida_vuelta: string;
+    
+    @Column('text', {nullable: true} )
+    imagen: string;
 
     //ManyToMany Clientes
     @ManyToMany(

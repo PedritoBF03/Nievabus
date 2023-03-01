@@ -39,12 +39,13 @@ export class ViajesService {
 
   async create(createViajeDto: CreateViajeDto) {
     try {
-      const { dniEmpleado, matriculaAutobus, dniCliente, ...camposViajes } = createViajeDto;
+      // const { dniEmpleado, matriculaAutobus, dniCliente, ...camposViajes } = createViajeDto;
+      const { dniEmpleado, dniCliente, ...camposViajes } = createViajeDto;
       const viaje = this.viajeRepository.create({
         ...camposViajes,
         //empleado: dniEmpleado.map(emplead => this.empleadoRepository.create({dni: emplead})),
         //cliente: dniCliente.map(client => this.clienteRepository.create({dni: client})),
-        autobus: matriculaAutobus.map(autobu => this.autobusRepository.create({matricula: autobu}))
+        // autobus: matriculaAutobus.map(autobu => this.autobusRepository.create({matricula: autobu}))
       });
 
       await this.viajeRepository.save(viaje);

@@ -25,7 +25,7 @@ export class SeedService {
         await this.insertNewUsuarios();
         await this.insertNewAutobus();
         await this.insertNewEmpleados();
-        await this.insertNewViajes();
+        // await this.insertNewViajes();
 
         return 'Datos insertados con éxito'
     }
@@ -70,13 +70,13 @@ export class SeedService {
         return true;
     }
 
-    private async insertNewViajes() {
-        await this.viajesServices.deleteAllViajes();
-        const insertPromises = [];
-        dataViajes.forEach((viaje) => {
-            insertPromises.push(this.viajesServices.create(viaje))
-        })
-        await Promise.all(insertPromises);
-        return true;
-    }
+    // private async insertNewViajes() {
+    //     await this.viajesServices.deleteAllViajes();
+    //     const insertPromises = [];
+    //     dataViajes.forEach((viaje) => {
+    //         insertPromises.push(this.viajesServices.create(viaje))
+    //     })
+    //     await Promise.all(insertPromises);
+    //     return true;
+    // }
 }

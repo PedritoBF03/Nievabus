@@ -1,9 +1,12 @@
-import { IsEmail, IsIn, IsString, MaxLength } from "class-validator";
+import { IsEmail, IsIn, IsOptional, IsString, MaxLength } from "class-validator";
 
 export class CreateViajeDto {
 
     @IsString()
     referencia: string;
+
+    @IsString()
+    descripcion: string;
     
     @IsString()
     origen: string;
@@ -19,7 +22,11 @@ export class CreateViajeDto {
     ida_vuelta: string;
 
     @IsString()
-    matriculaAutobus: string[];
+    @IsOptional()
+    imagen?: string;
+
+    // @IsString()
+    // matriculaAutobus: string[];
 
     @IsString()
     dniCliente: string[];
