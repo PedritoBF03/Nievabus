@@ -1,47 +1,42 @@
 [
     {
         "dni": "12345678V",
+        "fullname":"Pedro Benitez",
         "username": "pedrito",
         "email": "pedro@gmail.com",
-        "instagram": "pedrobf",
-        "facebook": "pedrobf",
-        "twitter": "pedrobf",
+        "password": "Pedro1",
         "dniCliente": "12345678V"
     },
     {
         "dni": "87654321A",
+        "fullname":"Yesica Rodriguez",
         "username": "yesicarg",
         "email": "yesica@gmail.com",
-        "instagram": "yesicarg15",
-        "facebook": "yesicarg15",
-        "twitter": "yesicarg15",
+        "password": "Yesicarg2",
         "dniCliente": "87654321A"
     },
     {
         "dni": "46821397F",
+        "fullname":"Leyre Martinez",
         "username": "leyremt",
         "email": "leyre@gmail.com",
-        "instagram": "leyremt65",
-        "facebook": "leyremt65",
-        "twitter": "leyremt65",
+        "password": "Leyremt1",
         "dniCliente": "46821397F"
     },
     {
         "dni": "22923678H",
+        "fullname":"Arsenio Cabrera",
         "username": "arseniocc",
         "email": "arsenio@gmail.com",
-        "instagram": "arsenyocc7536",
-        "facebook": "arsenyocc7536",
-        "twitter": "arsenyocc7536",
+        "password": "Arseniocc1",
         "dniCliente": "22923678H"
     },
     {
         "dni": "33336648Y",
+        "fullname":"Francisca Roble",
         "username": "franciscarc",
         "email": "francisca@gmail.com",
-        "instagram": "franciscarc453",
-        "facebook": "franciscarc453",
-        "twitter": "franciscarc453",
+        "password": "Cisco1",
         "dniCliente": "33336648Y"
     }
 ]

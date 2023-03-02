@@ -30,6 +30,7 @@ export class UsuariosService {
       await this.usuarioRepository.save(usuarios);
       return usuarios
     } catch(error){
+      console.log(error)
         return new InternalServerErrorException('Error en BD')
     }
     

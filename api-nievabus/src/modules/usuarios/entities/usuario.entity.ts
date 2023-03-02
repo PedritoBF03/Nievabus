@@ -8,20 +8,33 @@ export class Usuario {
     @PrimaryColumn()
     dni: string;
 
+    @Column('text')
+   fullname: string;
+
     @Column('text', { nullable: true} )
     username: string;
 
     @Column('text', { nullable: true })
     email: string;
 
-    @Column('text', { nullable: true })
-    instagram: string;
+    @Column('text')
+    password: string;
 
-    @Column('text', { nullable: true })
-    facebook: string;
+    @Column('text', {
+        array: true,
+        default: ['usuario']
+    })
+    roles: string;
+ 
 
-    @Column('text', { nullable: true })
-    twitter: string;
+    // @Column('text', { nullable: true })
+    // instagram: string;
+
+    // @Column('text', { nullable: true })
+    // facebook: string;
+
+    // @Column('text', { nullable: true })
+    // twitter: string;
 
     @OneToOne(
         () => Cliente,
