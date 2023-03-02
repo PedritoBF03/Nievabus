@@ -5,10 +5,10 @@ import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import { Usuario } from './entities/usuario.entity';
 import { ClientesService } from '../clientes/clientes.service';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsuariosService {
-
   constructor(
     private readonly dataSource: DataSource,
     
@@ -20,15 +20,29 @@ export class UsuariosService {
     
   }
 
+
   async create(createUsuarioDto: CreateUsuarioDto) {
     try {
+      //Original
       //console.log(createUsuarioDto);
-      const { dniCliente, ...camposProfile } = createUsuarioDto;
-      const usuarios = this.usuarioRepository.create({...camposProfile});
-      const cliente = await this.clienteService.findOne(dniCliente);
-      usuarios.cliente = cliente;
+      // const { dniCliente, ...camposProfile } = createUsuarioDto;
+      // const usuarios = this.usuarioRepository.create({...camposProfile});
+      // const cliente = await this.clienteService.findOne(dniCliente);
+      // usuarios.cliente = cliente;
+      // await this.usuarioRepository.save(usuarios);
+      // return usuarios
+
+      //Encriptacion de contraseña
+      const { password, ...userData } = createUsuarioDto;
+      const usuarios = this.usuarioRepository.create({
+        ...userData,
+        password: bcrypt.hashSync( password, 10 )
+      });
       await this.usuarioRepository.save(usuarios);
-      return usuarios
+      delete usuarios.password;
+      return usuarios;
+
+
     } catch(error){
       console.log(error)
         return new InternalServerErrorException('Error en BD')
