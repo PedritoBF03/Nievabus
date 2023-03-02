@@ -1,11 +1,18 @@
-import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
+import { LoginUserDto } from './dto/login.dto.ts';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import { Usuario } from './entities/usuario.entity';
 import { ClientesService } from '../clientes/clientes.service';
 import * as bcrypt from 'bcrypt';
+import { JwtPayload } from './interfaces/jwt-payload.interface';
+import { JwtService } from '@nestjs/jwt';
+
+
+// import { JwtPayload } from './interfaces/jwt-payload.interface';
+// import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class UsuariosService {
@@ -15,14 +22,32 @@ export class UsuariosService {
     @InjectRepository(Usuario)
     private readonly usuarioRepository: Repository<Usuario>,
     // Prueba cambiando el create si se elimina la prueba se elimina esta linea
-    private readonly clienteService: ClientesService
+    private readonly clienteService: ClientesService,
+    private readonly jwtService: JwtService
   ){
     
   }
 
-
+  //Create de encriptacion, original y version obsoleta
+  /*
   async create(createUsuarioDto: CreateUsuarioDto) {
     try {
+
+      //Copia obsoleta
+      // async create(createUsuarioDto: CreateUsuarioDto) {
+      //   try {
+      //     const usuario = this.usuarioRepository.create(createUsuarioDto);
+      //     console.log(usuario);
+      //     await this.usuarioRepository.save(usuario);
+      //     return usuario;
+
+      //   } catch (error) {
+      //     console.log(error);
+      //     throw new InternalServerErrorException('Ayuda')
+      //   }
+      // }
+
+
       //Original
       //console.log(createUsuarioDto);
       // const { dniCliente, ...camposProfile } = createUsuarioDto;
@@ -49,19 +74,76 @@ export class UsuariosService {
     }
     
   }
+  */
   
-  // async create(createUsuarioDto: CreateUsuarioDto) {
+  // async login( loginUserDto: LoginUserDto ){
   //   try {
-  //     const usuario = this.usuarioRepository.create(createUsuarioDto);
-  //     console.log(usuario);
-  //     await this.usuarioRepository.save(usuario);
-  //     return usuario;
-
+  //     const { email, password } = loginUserDto;
+  //     const user = await this.usuarioRepository.findOneBy({ email });
+  //     return user;
+     
   //   } catch (error) {
-  //     console.log(error);
-  //     throw new InternalServerErrorException('Ayuda')
+  //     this.handleDBErrors(error)
   //   }
-  // }
+  // } 
+
+  //Version definitiva
+  async create(createUsuarioDto: CreateUsuarioDto) {
+    try {
+      console.log(createUsuarioDto);
+      const { password, ...userData } = createUsuarioDto;
+      // const cliente = await this.clientesService.findOne(createUserDto.nif);
+      // console.log(cliente);
+      const user = this.usuarioRepository.create({
+        ...userData,
+        password: bcrypt.hashSync( password, 10 )
+      });
+      // user.cliente = cliente;
+      await this.usuarioRepository.save(user);
+      // delete user.password;
+
+      return {
+        user: { ...user }, 
+        token: this.getJwtToken({ email: user.email })
+      }
+
+    } catch (error) {
+      this.handleDBErrors(error)
+    }
+  }
+
+  async login( loginUserDto: LoginUserDto ){
+    try {
+      // buscamos el usuario del email
+      const { email, password } = loginUserDto;
+      const user = await this.usuarioRepository.findOne({ 
+        where: { email },
+        select: { email: true, password: true, roles: true, fullname: true }
+       });
+
+      if ( !user ) 
+        throw new UnauthorizedException ('Credenciales no válidas (email)');
+
+      //comparamos las contraseñas 
+      if (!bcrypt.compareSync( password, user.password ))
+        throw new UnauthorizedException('Credenciales no válidas (email)')
+      
+      return {
+        user: { ...user }, 
+        token: this.getJwtToken({ email: user.email })
+      }
+      
+    } catch (error) {
+      //console.log(Error)
+      this.handleDBErrors(error)
+    }
+  }
+
+  private getJwtToken( payload: JwtPayload){
+    const token = this.jwtService.sign(payload);
+    return token;
+  }
+
 
   findAll() {
     return this.usuarioRepository.find({});
