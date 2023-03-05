@@ -18,6 +18,9 @@ export class CreateViajeDto {
     hora_inicio: string;
 
     @IsString()
+    precio: string;
+
+    @IsString()
     @IsIn(['si','no'])
     ida_vuelta: string;
 

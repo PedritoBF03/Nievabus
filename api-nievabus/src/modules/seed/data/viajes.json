@@ -8,7 +8,8 @@
         "ida_vuelta": "si",
         "dniCliente": "12345678V",
         "dniEmpleado": "34535465V",
-        "imagen": "https://www.esmadrid.com/mcb/wp-content/uploads/2016/05/Madrid-ranking-330x220.jpg"
+        "imagen": "https://www.esmadrid.com/mcb/wp-content/uploads/2016/05/Madrid-ranking-330x220.jpg",
+        "precio": "200"
     },
     {
         "referencia": "HC-S",
@@ -19,7 +20,8 @@
         "ida_vuelta": "si",
         "dniCliente": "33336648Y",
         "dniEmpleado": "14750023O",
-        "imagen": "https://media.vogue.es/photos/62725ca9faf6563eafb0ade9/2:3/w_1600,c_limit/AIRE%20Ancient%20Baths%20Sevilla_09A4776.jpg"
+        "imagen": "https://media.vogue.es/photos/62725ca9faf6563eafb0ade9/2:3/w_1600,c_limit/AIRE%20Ancient%20Baths%20Sevilla_09A4776.jpg",
+        "precio": "190"
     },
     {
         "referencia": "HC-A",
@@ -30,7 +32,8 @@
         "ida_vuelta": "si",
         "dniCliente": "12345678V",
         "dniEmpleado": "34535465V",
-        "imagen":"https://metropoliabierta.elespanol.com/uploads/s1/20/20/20/6/sagradafamilia_9_1200x480.jpeg"
+        "imagen":"https://metropoliabierta.elespanol.com/uploads/s1/20/20/20/6/sagradafamilia_9_1200x480.jpeg",
+        "precio": "390"
     },
     {
         "referencia": "HC-B",
@@ -41,7 +44,8 @@
         "ida_vuelta": "si",
         "dniCliente": "33336648Y",
         "dniEmpleado": "14750023O",
-        "imagen": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/06/6c/8d/bd/vistas-desde-el-alto.jpg?w=800&h=600&s=1"
+        "imagen": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/06/6c/8d/bd/vistas-desde-el-alto.jpg?w=800&h=600&s=1",
+        "precio": "585"
     },
     {
         "referencia": "HC-C",
@@ -52,7 +56,8 @@
         "ida_vuelta": "si",
         "dniCliente": "12345678V",
         "dniEmpleado": "34535465V",
-        "imagen": "http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcQWGRwhXxXzNkyXFF1eUYXEftyk8w5krlzCq-v65fiUK6TVSwcwbw50rxbcFAxw0QzI"
+        "imagen": "http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcQWGRwhXxXzNkyXFF1eUYXEftyk8w5krlzCq-v65fiUK6TVSwcwbw50rxbcFAxw0QzI",
+        "precio": "150"
     },
     {
         "referencia": "HC-D",
@@ -63,7 +68,8 @@
         "ida_vuelta": "si",
         "dniCliente": "33336648Y",
         "dniEmpleado": "14750023O",
-        "imagen": "http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcRSYUr1KbJ5AkC2tb2HCjcp2bDU9PQ1L1w911Inmiv0s9yBXXRp5Ot9wXuEB5SHXZwh"
+        "imagen": "http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcRSYUr1KbJ5AkC2tb2HCjcp2bDU9PQ1L1w911Inmiv0s9yBXXRp5Ot9wXuEB5SHXZwh",
+        "precio": "40"
     },
     {
         "referencia": "HC-E",
@@ -74,7 +80,8 @@
         "ida_vuelta": "si",
         "dniCliente": "12345678V",
         "dniEmpleado": "34535465V",
-        "imagen": "https://planaje.com/wp-content/uploads/2020/07/146619-1.jpg"
+        "imagen": "https://imgs.search.brave.com/x-nbjR_X5bWHn0MtJ8T52HSKZ_S6wUu5RwWSIxUic_g/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93d3cu/dHJpcHNhdnZ5LmNv/bS90aG1iLzRTTXNX/Zm85UHYwNUtfcnlu/a2EtX3VoTmdhbz0v/MjEyNHgxNDExL2Zp/bHRlcnM6ZmlsbChh/dXRvLDEpL0dldHR5/SW1hZ2VzLTEwMzk1/OTU2MzAtODc3ZGM4/M2UwYmFjNGQ3Yzlm/ZWQ5Yjg1Y2M5N2Q3/YWIuanBn",
+        "precio": "20"
     },
     {
         "referencia": "HC-F",
@@ -85,6 +92,7 @@
         "ida_vuelta": "si",
         "dniCliente": "33336648Y",
         "dniEmpleado": "14750023O",
-        "imagen": "http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcTeEnhiPh7JO5umSwzsbQc63TSkRUlJsm82UJ0JDKq5md0p_foJAAzVRcvu5QFPdjBL"
+        "imagen": "http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcTeEnhiPh7JO5umSwzsbQc63TSkRUlJsm82UJ0JDKq5md0p_foJAAzVRcvu5QFPdjBL",
+        "precio": "310"
     }
 ]

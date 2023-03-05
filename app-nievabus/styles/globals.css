@@ -1,3 +1,21 @@
+header {
+  height: 25px;
+}
+
+main {
+  height: 500px;
+  /* background-color: azure; */
+}
+
 h1 {
   color: red;
 }
+
+/*Header y footer*/
+/* .MuiPaper-root{
+  background-color: orange;
+} */
+
+/* .MuiTypography-root{
+  color: red !important;
+} */

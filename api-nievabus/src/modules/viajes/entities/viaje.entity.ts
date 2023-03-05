@@ -23,6 +23,9 @@ export class Viaje {
 
     @Column('text', { nullable: true })
     ida_vuelta: string;
+
+    @Column('text', { nullable: true })
+    precio: string;
     
     @Column('text', {nullable: true} )
     imagen: string;
