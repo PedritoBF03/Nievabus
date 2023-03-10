@@ -1,3 +1,4 @@
+import { ViajesList } from '@/components/viajes/ViajesList';
 import { useViajes } from '@/hooks/useViajes';
 import { MainLayouts } from '@/layouts';
 
@@ -8,7 +9,15 @@ const IndexViajesPage = () => {
   console.log(isLoading, "c=", viajes)
   return (
     <MainLayouts>
-        <div>Viajes admin</div>
+      
+      <h2>Sección de Viajes Admin</h2>
+      <ViajesList viajes = {viajes} />
+            {/* {
+                (isLoading)
+                    ? <ViajesList viajes = {viajes} />
+                    : <Mundo />
+            } */}
+
     </MainLayouts>
     
   )

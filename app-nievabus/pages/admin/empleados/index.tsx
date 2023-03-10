@@ -1,3 +1,4 @@
+import { EmpleadosList } from '@/components/empleados';
 import { useEmpleados } from '@/hooks/useEmpleados';
 import { MainLayouts } from '@/layouts';
 
@@ -9,6 +10,9 @@ const IndexEmpleadosPage = () => {
   return (
     <MainLayouts>
         <div>Empleados admin</div>
+
+        <EmpleadosList empleados = {empleados} />
+
     </MainLayouts>
     
   )

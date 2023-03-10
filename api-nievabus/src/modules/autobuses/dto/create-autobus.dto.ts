@@ -1,4 +1,4 @@
-import { IsString, MaxLength } from "class-validator";
+import { IsOptional, IsString, MaxLength } from "class-validator";
 
 
 export class CreateAutobusDto {
@@ -7,14 +7,18 @@ export class CreateAutobusDto {
     matricula: string;
 
     @IsString()
-    marca: string;
+    carroceria: string;
 
     @IsString()
-    modelo: string;
+    motor: string;
 
     @IsString()
     @MaxLength(9)
     plazas: string;
+
+    @IsString()
+    @IsOptional()
+    imagen?: string;
 
 
 }

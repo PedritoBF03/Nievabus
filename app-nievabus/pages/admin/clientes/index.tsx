@@ -1,3 +1,4 @@
+import { ClientesList } from '@/components/clientes';
 import { useClientes } from '@/hooks/useClientes';
 import { MainLayouts } from '@/layouts';
 
@@ -9,6 +10,15 @@ const IndexClientesPage = () => {
   return (
     <MainLayouts>
         <div>Clientes admin</div>
+
+        <ClientesList clientes = {clientes} />
+
+        {/* {
+          (isLoading)
+          ? <ClientesList clientes = {clientes} />
+          : <Mundo />
+        } */}
+
     </MainLayouts>
     
   )

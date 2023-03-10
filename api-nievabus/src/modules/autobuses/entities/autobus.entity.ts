@@ -8,13 +8,16 @@ export class Autobus {
     matricula: string;
 
     @Column('text', { nullable: true} )
-    marca: string;
+    carroceria: string;
 
     @Column('text', { nullable: true })
-    modelo: string;
+    motor: string;
 
     @Column('text', { nullable: true })
     plazas: string;
+
+    @Column('text', {nullable: true} )
+    imagen: string;
 
 
     //ManyToMany viajes

@@ -14,5 +14,13 @@
         "email": "sonia@gmail.com",
         "fecha_nacimiento": "12-4-1988",
         "telefono": "687450930"
+    },
+    {
+        "dni": "51591549J",
+        "nombre": "Alberto",
+        "apellidos": "Sanchez",
+        "email": "alberto@gmail.com",
+        "fecha_nacimiento": "27-11-2003",
+        "telefono": "687678892"
     }
 ]

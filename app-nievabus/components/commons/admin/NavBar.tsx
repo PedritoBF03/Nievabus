@@ -71,7 +71,7 @@ export const NavBar = () => {
             Photos
           </Typography> */}
 
-            <Link href='/' passHref component={ NextLink } sx={{ flexGrow: 1 }}>
+            <Link href='/admin' passHref component={ NextLink } sx={{ flexGrow: 1 }}>
                     <Button sx={{ color: 'white'}}>
                       Home
                     </Button>
@@ -91,15 +91,15 @@ export const NavBar = () => {
             <Link href='/admin/empleados' component={ NextLink }>
                 <Button style={{color:'white'}}>Empleados</Button>
             </Link>
-            <Link href='/admin/clientes' component={ NextLink }>
-                <Button style={{color:'white'}}>Clientes</Button>
-            </Link>
             <Link href='/admin/usuarios' component={ NextLink }>
                 <Button style={{color:'white'}}>Usuarios</Button>
             </Link>
+            <Link href='/admin/clientes' component={ NextLink }>
+                <Button style={{color:'white'}}>Clientes</Button>
+            </Link>
           </Box>
 
-          <Typography>User: Pedro </Typography>
+          <Typography>User: Pedro</Typography>
           <Link href='/' passHref component={ NextLink } sx={{ flexGrow: 1 }}>
                     <Button sx={{ color: 'white'}}>
                       <LogoutIcon />

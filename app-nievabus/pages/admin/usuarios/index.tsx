@@ -1,3 +1,4 @@
+import { UsuariosList } from '@/components/usuarios';
 import { useUsuarios } from '@/hooks/useUsuarios';
 import { MainLayouts } from '@/layouts';
 
@@ -9,6 +10,9 @@ const IndexUsuariosPage = () => {
   return (
     <MainLayouts>
         <div>Usuarios admin</div>
+
+        <UsuariosList usuarios = {usuarios} />
+
     </MainLayouts>
     
   )
