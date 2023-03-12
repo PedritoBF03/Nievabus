@@ -5,14 +5,17 @@ import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn, PrimaryGeneratedCo
 export class Usuario {
 
     //Prueba dejando de clave primaria a DNI
-    @PrimaryColumn()
-    dni: string;
+    // @PrimaryColumn()
+    // dni: string;
+
+    @PrimaryGeneratedColumn('increment')
+    id:string;
 
     @Column('text')
-   fullname: string;
+   fullName: string;
 
-    @Column('text', { nullable: true} )
-    username: string;
+    // @Column('text', { nullable: true} )
+    // username: string;
 
     @Column('text', { nullable: true })
     email: string;

@@ -118,7 +118,7 @@ export class UsuariosService {
       const { email, password } = loginUserDto;
       const user = await this.usuarioRepository.findOne({ 
         where: { email },
-        select: { email: true, password: true, roles: true, fullname: true }
+        select: { email: true, password: true, roles: true, fullName: true }
        });
 
       if ( !user ) 
@@ -150,17 +150,17 @@ export class UsuariosService {
   }
 
   //Prueba dejando de clave primaria a DNI
-  findOne(dni: string) {
+  findOne(id: string) {
     return this.usuarioRepository.findOne({
       where: 
-        { dni: dni}
+        { id: id}
     });
   }
 
-  async update(dni: string, updateUsuarioDto: UpdateUsuarioDto) {
+  async update(id: string, updateUsuarioDto: UpdateUsuarioDto) {
     const { ...rest } = updateUsuarioDto;
     const usuario = await this.usuarioRepository.preload({
-      dni,
+      id,
       ...rest
     });
 
@@ -175,7 +175,7 @@ export class UsuariosService {
       await queryRunner.commitTransaction();
       await queryRunner.release();
 
-      return this.findOne(dni);
+      return this.findOne(id);
     }
     catch (error) {
       await queryRunner.rollbackTransaction();

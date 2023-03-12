@@ -1,7 +1,7 @@
 [
     {
         "dni": "12345678V",
-        "fullname":"Pedro Benitez",
+        "fullName":"Pedro Benitez",
         "username": "pedrito",
         "email": "pedro@gmail.com",
         "password": "Pedro1",
@@ -9,7 +9,7 @@
     },
     {
         "dni": "87654321A",
-        "fullname":"Yesica Rodriguez",
+        "fullName":"Yesica Rodriguez",
         "username": "yesicarg",
         "email": "yesica@gmail.com",
         "password": "Yesica1",
@@ -17,7 +17,7 @@
     },
     {
         "dni": "46821397F",
-        "fullname":"Leyre Martinez",
+        "fullName":"Leyre Martinez",
         "username": "leyremt",
         "email": "leyre@gmail.com",
         "password": "Leyre1",
@@ -25,7 +25,7 @@
     },
     {
         "dni": "22923678H",
-        "fullname":"Arsenio Cabrera",
+        "fullName":"Arsenio Cabrera",
         "username": "arseniocc",
         "email": "arsenio@gmail.com",
         "password": "Arsenio1",
@@ -33,7 +33,7 @@
     },
     {
         "dni": "33336648Y",
-        "fullname":"Francisca Roble",
+        "fullName":"Francisca Roble",
         "username": "franciscarc",
         "email": "francisca@gmail.com",
         "password": "Francisco1",
