@@ -23,17 +23,17 @@ const LoginPage = () => {
     const [ showError, setShowError ] = useState(false);
 
     const onLoginUser = async ({email, password}: FormData ) => {
-        setShowError(false);
+        // setShowError(false);
         const isValidLogin = await loginUser(email, password);
 
-        if (!isValidLogin){
-            setShowError(true);
-            setTimeout( () => setShowError(false), 3000);
-            return;
-        }
+        // if (!isValidLogin){
+        //     setShowError(true);
+        //     setTimeout( () => setShowError(false), 3000);
+        //     return;
+        // }
         //navegar a pantalla en la que estaba el usuario
         // router.push('/');
-        router.replace('/libros');
+        router.replace('/admin/');
     } 
     return (
         <AuthLayout title={'Ingresar'}>

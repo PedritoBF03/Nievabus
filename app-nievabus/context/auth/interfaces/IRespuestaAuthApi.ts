@@ -14,7 +14,7 @@ export interface IUserApi {
     password: string;
     fullName: string;
     isActive?: boolean;
-    roles: string[]
+    roles?: string[]
 }
 // export interface IRespuestaLogin {
 //     token: string;

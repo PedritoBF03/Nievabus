@@ -23,8 +23,15 @@ import { Button, Link, Typography } from '@mui/material';
 import NextLink from 'next/link';
 import MenuIcon from '@mui/icons-material/Menu';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useUsuarios } from '@/hooks/useUsuarios';
+import { AuthContext } from "@/context";
+import { useContext } from "react";
 
 export const NavBar = () => {
+
+  const { user } =  useContext(AuthContext); 
+  console.log('usuario: ', user);
+
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
@@ -99,7 +106,7 @@ export const NavBar = () => {
             </Link>
           </Box>
 
-          <Typography>User: Pedro</Typography>
+          <Typography>User: { user?.fullName }</Typography>
           <Link href='/' passHref component={ NextLink } sx={{ flexGrow: 1 }}>
                     <Button sx={{ color: 'white'}}>
                       <LogoutIcon />

@@ -54,7 +54,7 @@ export const AuthProvider:FC<{children: any}> = ({ children }) => {
             Cookies.set('token', token);
             // Cookies.set('rol', user.roles[0]);
             Cookies.set('rol', user.roles);
-            Cookies.set('Fullname', user.fullname);
+            Cookies.set('Fullname', user.fullName);
             //mando a llamar al login pq ya se autenticó
             dispatch({ type: '[Auth] - Login', payload: user });
             return {

@@ -8,7 +8,7 @@ export class Usuario {
     // @PrimaryColumn()
     // dni: string;
 
-    @PrimaryGeneratedColumn('increment')
+    @PrimaryGeneratedColumn('uuid')
     id:string;
 
     @Column('text')
