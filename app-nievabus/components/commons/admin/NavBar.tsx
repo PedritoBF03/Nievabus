@@ -105,8 +105,13 @@ export const NavBar = () => {
                 <Button style={{color:'white'}}>Clientes</Button>
             </Link>
           </Box>
+          
+          <Link href='/admin/detallesusuarios' component={ NextLink }>
+                <Button style={{color:'white'}}>User: { user?.fullName }</Button>
+          </Link>
 
-          <Typography>User: { user?.fullName }</Typography>
+          {/* <Typography>User: { user?.fullName }</Typography> */}
+
           <Link href='/' passHref component={ NextLink } sx={{ flexGrow: 1 }}>
                     <Button sx={{ color: 'white'}}>
                       <LogoutIcon />
