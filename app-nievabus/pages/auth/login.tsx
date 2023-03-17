@@ -7,6 +7,7 @@ import { Box, Grid, Typography, TextField, Button, Link, Chip } from '@mui/mater
 import { AuthContext } from '../../context';
 import { AuthLayout } from '../../layouts';
 import { validations } from '../../utils';
+import Cookies from 'js-cookie';
 interface IRespuestaLogin {
     token: string;
     email: string;
@@ -33,7 +34,19 @@ const LoginPage = () => {
         // }
         //navegar a pantalla en la que estaba el usuario
         // router.push('/');
-        router.replace('/admin/');
+        
+        // router.replace('/admin/');
+
+        const roles = Cookies.get('rol');
+
+        if ( roles == 'usuario' ) {
+            router.replace('/usuario');
+        }
+        
+        if ( roles == 'admin') {
+            router.replace('/admin');
+        }
+
     } 
     return (
         <AuthLayout title={'Ingresar'}>

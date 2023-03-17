@@ -39,6 +39,7 @@ export const AuthProvider:FC<{children: any}> = ({ children }) => {
             const { token, user } = data;
             console.log(user);
             Cookies.set('token', token);
+            Cookies.set('rol', user.roles);
             Cookies.set('FullName', user.fullName); 
             dispatch({ type: '[Auth] - Login', payload: user });
             return true;

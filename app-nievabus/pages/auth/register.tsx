@@ -127,6 +127,7 @@ import { validations } from '../../utils';
 import nievabusApi from '../../api/NievabusApi';
 import { useRouter } from 'next/router';
 import { AuthContext } from '../../context/auth/AuthContext';
+import Cookies from 'js-cookie';
 
 interface IRespuestaRegister {
     token: string;
@@ -169,7 +170,17 @@ const RegisterPage = () => {
     //     return;
     // }
 
-    router.replace('/admin');
+    // router.replace('/admin');
+
+    const roles = Cookies.get('rol');
+
+    if ( roles == 'usuario' ) {
+        router.replace('/usuario');
+    }
+    
+    if ( roles == 'admin') {
+        router.replace('/admin');
+    }
    
   }
 

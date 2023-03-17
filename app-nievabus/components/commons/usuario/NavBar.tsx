@@ -19,9 +19,11 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 // import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import { Button, Link } from '@mui/material';
+import { Button, Link, Typography } from '@mui/material';
 import NextLink from 'next/link';
 import MenuIcon from '@mui/icons-material/Menu';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useUsuarios } from '@/hooks/useUsuarios';
 import { AuthContext } from "@/context";
 import { useContext } from "react";
 
@@ -76,8 +78,10 @@ export const NavBar = () => {
             Photos
           </Typography> */}
 
-            <Link href='/' passHref component={ NextLink } sx={{ flexGrow: 1 }}>
-                    <Button sx={{ color: 'white'}}>Home</Button>
+            <Link href='/admin' passHref component={ NextLink } sx={{ flexGrow: 1 }}>
+                    <Button sx={{ color: 'white'}}>
+                      Home
+                    </Button>
                     {/* { user?.fullName }/{ user?.email }/{ user.roles[0] } */}
             </Link>
 
@@ -85,58 +89,30 @@ export const NavBar = () => {
           <Box component="nav" style={{color:'white'}} 
             sx={{ display: { xs: 'none', sm: 'flex' }, flexGrow: 1 }}>
 
-            <Link href='/viajes' component={ NextLink }>
+            <Link href='/usuario/viajes' component={ NextLink }>
                 <Button style={{color:'white'}}>Viajes</Button>
             </Link>
-            <Link href='/autobuses' component={ NextLink }>
+            <Link href='/usuario/autobuses' component={ NextLink }>
                 <Button style={{color:'white'}}>Autobuses</Button>
             </Link>
-            <Link href='/empleados' component={ NextLink }>
+            <Link href='/usuario/empleados' component={ NextLink }>
                 <Button style={{color:'white'}}>Empleados</Button>
             </Link>
           </Box>
+          
+          <Link href='/usuario/detallesusuarios' component={ NextLink }>
+                <Button style={{color:'white'}}>User: { user?.fullName }</Button>
+          </Link>
 
-          {auth && (
-            <div>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-              <AccountCircle />
-              </IconButton>
+          {/* <Typography>User: { user?.fullName }</Typography> */}
 
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>
-                  <Link href='/auth/login' passHref component={ NextLink }>
-                    <Button sx={{ color: 'black'}}>Login</Button>
-                  </Link>
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  <Link href='/auth/register' passHref component={ NextLink }>
-                    <Button sx={{ color: 'black'}}>Register</Button>
-                  </Link>
-                </MenuItem>
-              </Menu>
-            </div>
-          )}
+          <Link href='/' passHref component={ NextLink } sx={{ flexGrow: 1 }}>
+                    <Button sx={{ color: 'white'}}>
+                      <LogoutIcon />
+                    </Button>
+                    {/* { user?.fullName }/{ user?.email }/{ user.roles[0] } */}
+            </Link>
+
         </Toolbar>
       </AppBar>
     </Box>
