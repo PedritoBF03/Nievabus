@@ -33,7 +33,7 @@
 
 FROM node:18-alpine AS builder
 WORKDIR "/app"
-COPY ./api_nievabus .
+COPY ./api-nievabus .
 RUN yarn install --immutable --immutable-cache --check-cache
 RUN yarn run build
 RUN yarn config set network-timeout 60000

@@ -79,34 +79,34 @@ export const AuthProvider:FC<{children: any}> = ({ children }) => {
 
 
 
-    // const registerViaje = async (descripcion: string, destino: string, hora_inicio: string, ida_vuelta: string, imagen: string, origen: string, precio: string, referencia: string ):Promise<IRespuestaApiAuth>=> {
-    //     try {
-    //         const { data } = await nievabusApi.post ('/autobuses', { descripcion, destino, hora_inicio, ida_vuelta, imagen, origen, precio, referencia})
-    //         const { token, user } = data;
-    //         Cookies.set('token', token);
-    //         // Cookies.set('rol', user.roles[0]);
-    //         Cookies.set('rol', user.roles);
-    //         Cookies.set('Fullname', user.fullName);
-    //         //mando a llamar al login pq ya se autenticó
-    //         dispatch({ type: '[Auth] - Login', payload: user });
-    //         return {
-    //             hasError: false,
-    //             message: 'Viaje creado con éxito'
-    //         }
-    //     } catch (error) {
-    //         if (axios.isAxiosError(error)){
-    //             return {
-    //                 hasError: true,
-    //                 message: error.response?.data.message
-    //             }
-    //         }
-    //         // no es error de axios
-    //         return {
-    //             hasError: true,
-    //             message: 'No se puede crear el viaje, intentaló de nuevo'
-    //         }
-    //     }
-    // }
+    const registerViaje = async (descripcion: string, destino: string, hora_inicio: string, ida_vuelta: string, imagen: string, origen: string, precio: string, referencia: string ):Promise<IRespuestaApiAuth>=> {
+        try {
+            const { data } = await nievabusApi.post ('/autobuses', { descripcion, destino, hora_inicio, ida_vuelta, imagen, origen, precio, referencia})
+            const { token, user } = data;
+            Cookies.set('token', token);
+            // Cookies.set('rol', user.roles[0]);
+            Cookies.set('rol', user.roles);
+            Cookies.set('Fullname', user.fullName);
+            //mando a llamar al login pq ya se autenticó
+            dispatch({ type: '[Auth] - Login', payload: user });
+            return {
+                hasError: false,
+                message: 'Viaje creado con éxito'
+            }
+        } catch (error) {
+            if (axios.isAxiosError(error)){
+                return {
+                    hasError: true,
+                    message: error.response?.data.message
+                }
+            }
+            // no es error de axios
+            return {
+                hasError: true,
+                message: 'No se puede crear el viaje, intentaló de nuevo'
+            }
+        }
+    }
 
 
 
