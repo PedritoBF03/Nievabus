@@ -1,14 +1,14 @@
 import { useEmpleados } from '@/hooks/useEmpleados'
-import { PublicLayouts } from '@/layouts'
+import { UserLayouts } from '@/layouts'
 import React from 'react'
 
 const IndexEmpleadosPage = () => {
-  const { empleados, isLoading } = useEmpleados ('/empleados')
+  const { empleados, isLoading } = useEmpleados ('/usuario/empleados')
   console.log(isLoading, "c=", empleados)
   return (
-    <PublicLayouts>
+    <UserLayouts>
         <div>Empleados</div>
-    </PublicLayouts>
+    </UserLayouts>
   )
 }
 

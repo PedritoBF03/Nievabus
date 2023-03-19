@@ -1,4 +1,4 @@
-import { ViajesCardList } from '@/components/viajes';
+import { LogoutViajesCardList } from '@/components/viajes';
 import { useViajes } from '@/hooks/useViajes';
 import { PublicLayouts } from '../../layouts/PublicLayouts';
 
@@ -9,7 +9,7 @@ const IndexViajesPage = () => {
   return (
     <PublicLayouts>
         <div>Viajes</div>
-        <ViajesCardList viajes = {viajes}/>
+        <LogoutViajesCardList viajes = {viajes}/>
     </PublicLayouts>
     
   )

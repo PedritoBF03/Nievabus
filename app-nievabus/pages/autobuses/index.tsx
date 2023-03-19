@@ -1,4 +1,4 @@
-import { AutobusesCardList } from '@/components/autobuses'
+import { AutobusesCardList, LogoutAutobusesCardList } from '@/components/autobuses'
 import { useAutobuses } from '@/hooks/useAutobuses'
 import { PublicLayouts } from '@/layouts'
 import React from 'react'
@@ -9,7 +9,7 @@ const IndexAutobusesPage = () => {
   return (
     <PublicLayouts>
         <div>Autobuses</div>
-        <AutobusesCardList autobuses = {autobuses}/>
+        <LogoutAutobusesCardList autobuses = {autobuses}/>
     </PublicLayouts>
   )
 }

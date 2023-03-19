@@ -4,6 +4,7 @@ import { MainLayouts, PublicLayouts } from "../../layouts";
 import { IAutobuses } from '../../interfaces/autobuses/IAutobuses';
 import { AutobusesDetail } from "@/components/autobuses/AutobusesDetail";
 import { useAutobuses } from "@/hooks/useAutobuses";
+import { LogoutAutobusesDetail } from "@/components/autobuses";
 
 
 interface Props {
@@ -21,7 +22,7 @@ const LibroPage = () => {
   return (
     <PublicLayouts> 
        <h2>Detalle del autobus {`${router.query.id}`} </h2>
-        <AutobusesDetail autobuses={autobuses} />
+        <LogoutAutobusesDetail autobuses={autobuses} />
         
     </PublicLayouts>
     

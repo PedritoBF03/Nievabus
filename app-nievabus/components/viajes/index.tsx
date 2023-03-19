@@ -1,2 +1,5 @@
 export * from './ViajesCardList' 
 export * from './ViajesCard' 
+export * from './LogoutViajesCardList'
+export * from './LogoutViajesCard'
+export * from './LogoutViajesDetail'

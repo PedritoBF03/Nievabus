@@ -3,7 +3,8 @@ import { FC } from "react"
 import { MainLayouts, PublicLayouts } from "../../layouts";
 import { useViajes } from '../../hooks/useViajes';
 import { IViajes } from '../../interfaces/viajes/IViajes';
-import { ViajesDetail } from "@/components/viajes/ViajesDetail";
+import { LogoutViajesDetail } from "@/components/viajes";
+
 
 interface Props {
     referencia: string
@@ -20,7 +21,7 @@ const LibroPage = () => {
   return (
     <PublicLayouts> 
        <h2>Detalle del viaje {`${router.query.id}`} </h2>
-        <ViajesDetail viajes={viajes} />
+        <LogoutViajesDetail viajes={viajes} />
         
     </PublicLayouts>
     

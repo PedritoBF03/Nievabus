@@ -1,16 +1,16 @@
 import { ViajesCardList } from '@/components/viajes';
 import { useViajes } from '@/hooks/useViajes';
-import { PublicLayouts } from '../../layouts/PublicLayouts';
+import { UserLayouts } from '@/layouts';
 
 const IndexViajesPage = () => {
   const { viajes, isLoading } = useViajes ('/viajes')
   console.log(isLoading, "c=", viajes)
   
   return (
-    <PublicLayouts>
-        <div>Viajes</div>
+    <UserLayouts>
+        <div>Viajes usuario</div>
         <ViajesCardList viajes = {viajes}/>
-    </PublicLayouts>
+    </UserLayouts>
     
   )
 }

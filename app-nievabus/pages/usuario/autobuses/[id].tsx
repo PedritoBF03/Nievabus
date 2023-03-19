@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { FC } from "react"
-import { MainLayouts, PublicLayouts } from "../../layouts";
-import { IAutobuses } from '../../interfaces/autobuses/IAutobuses';
+import { MainLayouts, UserLayouts } from "../../../layouts";
+import { IAutobuses } from '../../../interfaces/autobuses/IAutobuses';
 import { AutobusesDetail } from "@/components/autobuses/AutobusesDetail";
 import { useAutobuses } from "@/hooks/useAutobuses";
 
@@ -16,14 +16,14 @@ const LibroPage = () => {
    
     const matricula = router.query;
     // renombrando la variable autobuses por autobuses
-    const { autobuses:autobuses, isLoading } = useAutobuses(`/autobuses/${matricula.id}`);
+    const { autobuses:autobuses, isLoading } = useAutobuses(`/usuario/autobuses/${matricula.id}`);
     console.log(autobuses)
   return (
-    <PublicLayouts> 
+    <UserLayouts> 
        <h2>Detalle del autobus {`${router.query.id}`} </h2>
         <AutobusesDetail autobuses={autobuses} />
         
-    </PublicLayouts>
+    </UserLayouts>
     
   )
 }

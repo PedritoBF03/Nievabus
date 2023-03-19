@@ -78,7 +78,7 @@ export const NavBar = () => {
             Photos
           </Typography> */}
 
-            <Link href='/admin' passHref component={ NextLink } sx={{ flexGrow: 1 }}>
+            <Link href='/usuario' passHref component={ NextLink } sx={{ flexGrow: 1 }}>
                     <Button sx={{ color: 'white'}}>
                       Home
                     </Button>
