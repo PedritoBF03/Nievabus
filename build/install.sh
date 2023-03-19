@@ -1,1 +1,0 @@
-echo "Se ha ejecutado correctamente la tarea padre de Nievabus 2"
