@@ -79,16 +79,10 @@ export const AuthProvider:FC<{children: any}> = ({ children }) => {
 
 
 
-    const registerViaje = async (descripcion: string, destino: string, hora_inicio: string, ida_vuelta: string, imagen: string, origen: string, precio: string, referencia: string ):Promise<IRespuestaApiAuth>=> {
+    const registerViaje = async (descripcion: string, destino: string, hora_inicio: string, ida_vuelta: string, imagen: string, origen: string, precio: string, referencia: string, dniCliente: string, dniEmpleado: string ):Promise<IRespuestaApiAuth>=> {
         try {
-            const { data } = await nievabusApi.post ('/autobuses', { descripcion, destino, hora_inicio, ida_vuelta, imagen, origen, precio, referencia})
-            const { token, user } = data;
-            Cookies.set('token', token);
-            // Cookies.set('rol', user.roles[0]);
-            Cookies.set('rol', user.roles);
-            Cookies.set('Fullname', user.fullName);
-            //mando a llamar al login pq ya se autenticó
-            dispatch({ type: '[Auth] - Login', payload: user });
+            const { data } = await nievabusApi.post ('/viajes', { descripcion, destino, hora_inicio, ida_vuelta, imagen, origen, precio, referencia, dniCliente, dniEmpleado})
+
             return {
                 hasError: false,
                 message: 'Viaje creado con éxito'
@@ -114,7 +108,8 @@ export const AuthProvider:FC<{children: any}> = ({ children }) => {
         <AuthContext.Provider value={{
             ...state,
             loginUser,
-            registerUser
+            registerUser,
+            registerViaje
         }}>
             { children }
         </AuthContext.Provider>

@@ -1,4 +1,4 @@
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Link } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { FC } from 'react';
 import { IViajes } from '../../interfaces/viajes/IViajes';
@@ -25,7 +25,7 @@ export const ViajesList:FC<Props> = ({viajes}) => {
   return (
             <Grid container sx={{ width: '70%', display: 'flex',justifyContent: 'flex-end'}}>
               <Box >
-                <AddBoxIcon sx={{  color: 'green', fontSize:40 }} />
+                <Link href="/admin/viajes/insertar"><AddBoxIcon sx={{  color: 'green', fontSize:40 }} /></Link>
               </Box>
                
                <Grid item xs={12} 
