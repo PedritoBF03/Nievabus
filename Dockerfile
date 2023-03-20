@@ -23,6 +23,11 @@ COPY  --chown=node:node ./api-nievabus/package.json .
 COPY --chown=node:node ./api-nievabus/yarn.lock .
 RUN yarn install --force
 
+RUN cd ./api-nievabus
+RUN yarn install
+
+WORKDIR /app
+
 COPY --chown=node:node ./api-nievabus .
 
 RUN yarn build
