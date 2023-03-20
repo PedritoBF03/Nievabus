@@ -12,6 +12,9 @@ services:
       POSTGRES_USER: ${DB_USERNAME}
     volumes:
       - ./postgres:/var/lib/postgresql/data
+    networks: 
+      red:
+        ipv4_address: 172.150.10.4
   
   weblibrerianest:
     container_name: apiNievabusNest
@@ -36,3 +39,12 @@ services:
       - ./logs:/var/logs
     # depends_on:
     #   - db  
+    networks: 
+      red:
+        ipv4_address: 172.150.10.5
+networks: 
+  red:
+      ipam: 
+          driver: default
+          config: 
+              - subnet: 172.150.10.0/24
