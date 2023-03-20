@@ -6,7 +6,8 @@ echo "Desplegando la app de ptienda"
 
 cd /var/lib/jenkins/workspace/proyecto_final/Job-pNievabus/api-nievabus
 
-export $(cat .env | xargs)
+# export $(cat .env | xargs)
+export $(cat .env)
 
 docker-compose -f /var/lib/jenkins/workspace/proyecto_final/Job-pNievabus/api-nievabus/docker-compose.yml build --no-cache
 
