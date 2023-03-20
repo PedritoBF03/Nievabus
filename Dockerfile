@@ -21,6 +21,7 @@ ENV NEST_PORT=${NEST_PORT}
 WORKDIR /app
 COPY  --chown=node:node ./api-nievabus/package.json .
 COPY --chown=node:node ./api-nievabus/yarn.lock .
+COPY --chown=node:node ./api-nievabus/.env .
 RUN yarn install --force
 
 COPY --chown=node:node ./api-nievabus .
