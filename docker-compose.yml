@@ -1,3 +1,58 @@
+# version: "3.8"
+# services:
+#   dbincidenciasnest:
+#     container_name: bdNIevabusNest
+#     image: postgres:14.3
+#     restart: always
+#     ports:
+#       - ${DB_PORT}:5432
+#     environment:
+#       POSTGRES_PASSWORD: ${DB_PASSWORD}
+#       POSTGRES_DB: ${DB_NAME}
+#       POSTGRES_USER: ${DB_USERNAME}
+#     volumes:
+#       - ./postgres:/var/lib/postgresql/data
+#     networks: 
+#       red:
+#         ipv4_address: 172.150.10.4
+  
+#   weblibrerianest:
+#     container_name: apiNievabusNest
+#     image: apinestincidencias
+#     build:
+#       context: ./
+#       dockerfile: ./Dockerfile
+#       args:
+#         - PROYECTO=${PROYECTO}
+#         - DB_HOST=${DB_HOST}
+#         - DB_NAME=${DB_NAME}
+#         - DB_USERNAME=${DB_USERNAME}
+#         - DB_PASSWORD=${DB_PASSWORD}
+#         - DB_PORT=${DB_PORT}
+#         - NEST_PORT=${NEST_PORT}
+#     env_file:
+#        - ./.env
+#     ports:
+#       - ${NEST_PORT}:3000
+#     volumes:
+#       - ./web:/var/www/html
+#       - ./logs:/var/logs
+#     # depends_on:
+#     #   - db  
+#     networks: 
+#       red:
+#         ipv4_address: 172.150.10.5
+# networks: 
+#   red:
+#       ipam: 
+#           driver: default
+#           config: 
+#               - subnet: 172.150.10.0/24
+
+
+
+
+
 version: "3.8"
 services:
   dbincidenciasnest:
@@ -5,11 +60,11 @@ services:
     image: postgres:14.3
     restart: always
     ports:
-      - ${DB_PORT}:5432
+      - 5434:5432
     environment:
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: pswIncidencias
+      POSTGRES_DB: DBIncidencias
+      POSTGRES_USER: postgres
     volumes:
       - ./postgres:/var/lib/postgresql/data
     networks: 
@@ -23,17 +78,17 @@ services:
       context: ./
       dockerfile: ./Dockerfile
       args:
-        - PROYECTO=${PROYECTO}
-        - DB_HOST=${DB_HOST}
-        - DB_NAME=${DB_NAME}
-        - DB_USERNAME=${DB_USERNAME}
-        - DB_PASSWORD=${DB_PASSWORD}
-        - DB_PORT=${DB_PORT}
-        - NEST_PORT=${NEST_PORT}
+        - PROYECTO=apiNievabus
+        - DB_HOST=45.13.59.118
+        - DB_NAME=DBIncidencias
+        - DB_USERNAME=postgres
+        - DB_PASSWORD=pswIncidencias
+        - DB_PORT=5434
+        - NEST_PORT=$3000
     env_file:
        - ./.env
     ports:
-      - ${NEST_PORT}:3000
+      - 3000:3000
     volumes:
       - ./web:/var/www/html
       - ./logs:/var/logs
