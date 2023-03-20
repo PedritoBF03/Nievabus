@@ -116,7 +116,7 @@ services:
     ports:
       - 3000:3000
     depends_on:
-      - db
+      - db6
   db6:
     image: postgres:14-alpine
     restart: always
