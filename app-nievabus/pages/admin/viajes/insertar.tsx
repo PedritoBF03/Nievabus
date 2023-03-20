@@ -69,7 +69,7 @@ const IngersarPage = () => {
                                 sx={{ display: showError ? 'flex': 'none'}}
                             />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} >
                     <TextField 
                         { ...register('descripcion', {
                             required: 'Descripcion obligatorio'
