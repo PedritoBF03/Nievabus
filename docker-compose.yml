@@ -13,26 +13,26 @@ services:
     volumes:
       - ./postgres:/var/lib/postgresql/data
   
-  weblibrerianest:
-    container_name: apiIncidenciasNest
-    image: apinestincidencias
-    build:
-      context: ./
-      dockerfile: ./Dockerfile
-      args:
-        - PROYECTO=${PROYECTO}
-        - DB_HOST=${DB_HOST}
-        - DB_NAME=${DB_NAME}
-        - DB_USERNAME=${DB_USERNAME}
-        - DB_PASSWORD=${DB_PASSWORD}
-        - DB_PORT=${DB_PORT}
-        - NEST_PORT=${NEST_PORT}
-    env_file:
-       - ./.env
-    ports:
-      - ${NEST_PORT}:80
-    volumes:
-      - ./web:/var/www/html
-      - ./logs:/var/logs
+  # weblibrerianest:
+  #   container_name: apiIncidenciasNest
+  #   image: apinestincidencias
+  #   build:
+  #     context: ./
+  #     dockerfile: ./Dockerfile
+  #     args:
+  #       - PROYECTO=${PROYECTO}
+  #       - DB_HOST=${DB_HOST}
+  #       - DB_NAME=${DB_NAME}
+  #       - DB_USERNAME=${DB_USERNAME}
+  #       - DB_PASSWORD=${DB_PASSWORD}
+  #       - DB_PORT=${DB_PORT}
+  #       - NEST_PORT=${NEST_PORT}
+  #   env_file:
+  #      - ./.env
+  #   ports:
+  #     - ${NEST_PORT}:80
+  #   volumes:
+  #     - ./web:/var/www/html
+  #     - ./logs:/var/logs
     # depends_on:
     #   - db  
