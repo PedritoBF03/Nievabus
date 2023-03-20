@@ -29,6 +29,7 @@ RUN yarn build
 ENV NODE_ENV production
 RUN yarn config set network-timeout 60000
 RUN yarn install --production=true && yarn cache clean --force
+RUN yarn install --force
 # WORKDIR /app/dist
 # EXPOSE 3005
 
